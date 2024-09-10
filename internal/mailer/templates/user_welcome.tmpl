@@ -1,0 +1,40 @@
+{{define "subject"}}Welcome to Greenlight!{{end}}
+
+{{define "plainBody"}}
+Hi,
+
+Thanks for signing up for a Greenlight account. We're excited to have you on board!
+
+For future reference, your user ID number is {{.userID}}.
+
+Please send a request to the PUT `PUT /v1/users/activated` endpoint with the following JSON body to activate your account:
+
+{"token": "{{.activationToken}}"}
+
+Please note that this is a one-time use token and it will expire in 3 days.
+
+Thanks,
+
+The Greenlight Team
+{{end}}
+
+{{define "htmlBody"}}
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <p>Hi,</p>
+    <p>Thanks for signing up for a Greenlight account. We're excited to have you on board!</p>
+    <a href="http://localhost:3000/auth/custom/verify-email?token={{.activationToken}}">Verify Email</a>
+    <p>Please note that this is a one-time use token and it will expire in 3 days.</p>
+    <p>Thanks,</p>
+    <p>The Greenlight Team</p>
+</body>
+
+</html>
+{{end}}
